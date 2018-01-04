@@ -1,0 +1,14 @@
+---
+# handlers file for chrony
+
+- name: restart chrony on Debian system
+  service:
+    name: chrony
+    state: restarted
+
+- name: restart chronyd on EL system
+  systemd:
+    name: chronyd
+    state: restarted
+
+# vim: ft=ansible :

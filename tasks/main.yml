@@ -1,0 +1,12 @@
+---
+# tasks file for chrony
+
+- name: delegate to 'apt' system for installation
+  import_tasks: use_apt.yml
+  when: ansible_pkg_mgr == 'apt'
+
+- name: delegate to 'yum' system for installation
+  import_tasks: use_yum.yml
+  when: ansible_pkg_mgr == 'yum'
+
+# vim: ft=ansible :

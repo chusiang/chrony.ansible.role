@@ -1,0 +1,21 @@
+---
+# tasks file for chrony
+
+- name: install chrony with apt
+  become: true
+  apt:
+    name: '{{ apt_chrony_package }}'
+    state: present
+
+- name: setting the chrony on Debian system
+  become: true
+  template:
+    src: templates/chrony_v2.conf.j2
+    dest: '{{ apt_chrony_conf }}'
+    owner: root
+    group: root
+    mode: 0644
+    backup: yes
+  notify: restart chrony on Debian system
+
+# vim: ft=ansible :

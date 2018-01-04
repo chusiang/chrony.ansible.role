@@ -1,0 +1,20 @@
+---
+# tasks file for chrony
+
+- name: install chrony with yum
+  yum:
+    name: '{{ yum_chrony_package }}'
+    state: present
+
+- name: setting the chrony on EL system
+  become: true
+  template:
+    src: templates/chrony_v3.conf.j2
+    dest: '{{ yum_chrony_conf }}'
+    owner: root
+    group: root
+    mode: 0644
+    backup: yes
+  notify: restart chronyd on EL system
+
+# vim: ft=ansible :
