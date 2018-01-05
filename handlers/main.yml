@@ -10,6 +10,7 @@
   systemd:
     name: chronyd
     state: restarted
+    enabled: yes
   when: ansible_virtualization_type != 'docker'
 
 # vim: ft=ansible :
