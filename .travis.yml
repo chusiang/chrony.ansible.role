@@ -1,5 +1,5 @@
 language: bash
-sudo: true
+sudo: required
 services:
   - docker
 
@@ -7,13 +7,15 @@ before_install:
   - docker info
   - docker version
   - echo "==> Build with Docker ..."
-  - docker build -f tests/Dockerfile.ubuntu16.04  -t chrony:ubuntu16.04 . | tee tests/output.ubuntu16.04.log
   - docker build -f tests/Dockerfile.centos7      -t chrony:centos7     . | tee tests/output.centos7.log
+  - docker build -f tests/Dockerfile.debian9      -t chrony:debian9     . | tee tests/output.debian9.log
+  - docker build -f tests/Dockerfile.ubuntu16.04  -t chrony:ubuntu16.04 . | tee tests/output.ubuntu16.04.log
 
 script:
   - echo "==> Run Test case ..."
-  - grep 'chronyc (chrony) version' tests/output.ubuntu16.04.log
   - grep 'chronyc (chrony) version' tests/output.centos7.log
+  - grep 'chronyc (chrony) version' tests/output.debian9.log
+  - grep 'chronyc (chrony) version' tests/output.ubuntu16.04.log
 
 notifications:
   webhooks: https://galaxy.ansible.com/api/v1/notifications/
