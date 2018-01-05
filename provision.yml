@@ -7,17 +7,8 @@
     - defaults/main.yml
 
   tasks:
-    - name: include tasks
+    - name: include main tasks
       import_tasks: tasks/main.yml
-
-    - name: check chrony version
-      command: chronyc --version
-      register: chrony_version
-      changed_when: False
-
-    - name: print chrony version
-      debug:
-        msg: "{{ chrony_version.stdout_lines }}"
 
   handlers:
     - name: include handlers

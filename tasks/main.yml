@@ -1,6 +1,7 @@
 ---
-# tasks file for chrony
+# tasks file for chrony.ansible.role
 
+# Setup.
 - name: delegate to 'apt' system for installation
   import_tasks: use_apt.yml
   when: ansible_pkg_mgr == 'apt'
@@ -8,5 +9,9 @@
 - name: delegate to 'yum' system for installation
   import_tasks: use_yum.yml
   when: ansible_pkg_mgr == 'yum'
+
+# Verify.
+- name: include verify tasks
+  import_tasks: verify.yml
 
 # vim: ft=ansible :

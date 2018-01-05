@@ -1,0 +1,22 @@
+---
+# tasks file for chrony.ansible.role
+
+- name: check chrony version
+  command: chronyc --version
+  register: chrony_version
+  changed_when: False
+
+- name: print chrony version
+  debug:
+    msg: "{{ chrony_version.stdout_lines }}"
+
+- name: check chrony tracking
+  command: chronyc tracking
+  register: chrony_tracking
+  changed_when: False
+
+- name: print chrony tracking
+  debug:
+    msg: "{{ chrony_tracking.stdout_lines }}"
+
+# vim: ft=ansible :

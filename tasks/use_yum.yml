@@ -1,5 +1,5 @@
 ---
-# tasks file for chrony
+# tasks file for chrony.ansible.role
 
 - name: install chrony with yum
   yum:
