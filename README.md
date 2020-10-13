@@ -1,7 +1,7 @@
 Ansible Role: chrony
 ====================
 
-[![Build Status](https://travis-ci.org/chusiang/chrony.ansible.role.svg?branch=master)](https://travis-ci.org/chusiang/chrony.ansible.role) [![Ansible Galaxy](https://img.shields.io/badge/role-chrony-blue.svg)](https://galaxy.ansible.com/chusiang/chrony/) 
+[![Build Status](https://travis-ci.org/chusiang/chrony.ansible.role.svg?branch=master)](https://travis-ci.org/chusiang/chrony.ansible.role) [![Ansible Galaxy](https://img.shields.io/badge/role-chrony-blue.svg)](https://galaxy.ansible.com/chusiang/chrony/)
 
 An Ansible role of setup chrony in everyway.
 
@@ -60,7 +60,17 @@ Including an example of how to use your role (for instance, with variables passe
       roles:
          - { role: chusiang.chrony }
 
+Known Issues
+------------
+
+1. Misalignment of the upper NTP has exceeded the 5000ms on Zabbix.
+
+    ```
+    # Immediately synchronize by manual.
+    $ sudo chronyc -a makestep
+    ```
+
 License
 -------
 
-Copyright (c) chusiang from 2018 under the MIT license.
+Copyright (c) chusiang from 2018-2020 under the MIT license.
